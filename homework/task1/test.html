@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task1</title>
+</head>
+<body>
+    <script type="module">
+        const example = "Вот пример строки,в которой     используются знаки препинания.После знаков должны стоять пробелы , а перед знаками их быть не должно .    Если есть лишние подряд идущие пробелы, они должны быть устранены."
+        import * as stFu from "./stringFunctions.js";
+
+        alert(stFu.getUpperFirstLetter("asDF"));
+        alert(stFu.getRightSpaces(example));
+        alert(stFu.getWordsCount(" !! Всем, привет! В этой... строке :) мы считаем слова! /")); //слов 8
+
+        let wordsCount = stFu.getUniqueWordsCount("Текст, в котором слово текст несколько раз встречается и слово тоже");
+        for (let i in wordsCount) {
+            let s = wordsCount[i];
+            alert(`Слово "${s[0]}" встречается в тексте ${s[1]} раз(a).`);
+        }
+    </script>
+</body>
+</html>

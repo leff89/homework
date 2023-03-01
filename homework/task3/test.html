@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="module">
+        import {getCorrectList} from "./filtrator.js";
+
+        class Product {
+            constructor(name, price, quantity, description) {
+                this.name = name;
+                this.price = price;
+                this.quantity = quantity; 
+                this.description = description;
+            }
+        }
+
+        let p1 = new Product("sofda", 2, 5, "ajnsabc"); //true false
+        let p2 = new Product("fdor", 3, 5, "sabca");    //false true
+        let p3 = new Product("orak", 4, 7, "abcaa");    //false false 
+        let p4 = new Product("jjfda", 2, 4, "aas");     //false false
+        let p5 = new Product("fd", 2, 5, "ajabca");     //false true
+        let p6 = new Product("aafda", 2, 12, "aaabc");  //false false
+
+        let answer1 = getCorrectList("name-contains-fd&price-=2&quantity->=5&description-ends-abc", [p1, p2, p3, p4, p5, p6]);
+        let answer2 = getCorrectList("name-starts-fd&quantity-=5", [p1, p2, p3, p4, p5, p6]);
+        let answers = [answer1, answer2];
+
+        for (let i = 0; i < answers.length; i++) {
+            for (let element of answers[i]) {
+                alert(`Проверку №${i} прошел элемент с name ${element.name}`);
+            }
+        }
+    </script>
+</body>
+</html>
